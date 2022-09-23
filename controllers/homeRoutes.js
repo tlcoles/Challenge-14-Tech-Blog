@@ -28,4 +28,28 @@ router.get('/', async (req, res) => {
   }
 });
 
+// Show single blogpost
+
+router.get('/post/:id', async (req, res) => {
+  try {
+    const blogPostData = await BlogPost.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ['username'],
+        },
+      ],
+    });
+
+    const blogpost = blogPostData.get({ plain: true });
+
+    res.render('blogpost', {
+      ...blogpost,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;

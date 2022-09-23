@@ -2,7 +2,8 @@
 {{#each blogposts as |blogpost| }}
 <div>
     <h2>
-        {{blogpost.title}}
+        <a href="/post/{{blogpost.id}}">      {{blogpost.title}}</a>
+
     </h2>
     <p>
         {{blogpost.content}}
