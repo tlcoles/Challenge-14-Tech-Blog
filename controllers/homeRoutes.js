@@ -40,6 +40,18 @@ router.get('/post/:id', async (req, res) => {
         },
       ],
     });
+  
+    // //! findAll is not the correct method! findByPk is also incorrect because just for one
+    // const commentsData = await Comment.findAll(req.params.id, {
+    //   include: [
+    //     {
+    //       model: User,
+    //       attributes: ['username'],
+    //     },
+    //   ],
+    // });
+     // //! then add the part where you serialize the data for the template
+      // //! all pass in the comments attached to blog post, maybe assign to blog post
 
     const blogpost = blogPostData.get({ plain: true });
 
