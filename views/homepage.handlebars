@@ -1,3 +1,15 @@
+<p>Here we are!</p>
+{{#each blogposts as |blogpost| }}
 <div>
-    <p>Here we are!</p>
+    <h2>
+        {{blogpost.title}}
+    </h2>
+    <p>
+        {{blogpost.content}}
+
+    </p>
+    <p>
+        Created by {{blogpost.user.username}} on {{format_date blogpost.creation_date}}
+    </p>
 </div>
+{{/each}}
