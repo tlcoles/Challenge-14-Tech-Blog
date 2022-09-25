@@ -29,7 +29,6 @@ router.get('/', async (req, res) => {
 });
 
 // Show single blogpost
-
 router.get('/post/:id', async (req, res) => {
   try {
     const blogPostData = await BlogPost.findByPk(req.params.id, {
@@ -79,8 +78,8 @@ router.get('/profile', withAuth, async (req, res) => {
       ...user,
       logged_in: true
     });
-  } catch (err) {
-    res.status(500).json(err);
+  } catch (error) {
+    res.status(500).json(error);
   }
 });
 router.get('/login', (req, res) => {
