@@ -7,9 +7,21 @@
     <title>Tammi's Tech Blog Community</title>
 </head>
 <body>
+    <nav>
+        <!-- Conditionally render login or logout links -->
+        {{#if logged_in}}
+        <a href="/profile">profile</a> |
+        <button class="no-button" id="logout">logout</button>
+        {{else}}
+        <a href="/login">login</a>
+        {{/if}}
+    </nav>
     <h1>Tammi's Tech Blog Community</h1>
     <main>
          {{{ body }}}
     </main>
+    <footer>
+        <p>Created by me!</p>
+    </footer>
 </body>
 </html>
