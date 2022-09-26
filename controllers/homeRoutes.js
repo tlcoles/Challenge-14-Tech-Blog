@@ -39,20 +39,28 @@ router.get('/post/:id', async (req, res) => {
         },
       ],
     });
-  
-    // //! findAll is not the correct method! findByPk is also incorrect because just for one
-    // const commentsData = await Comment.findAll(req.params.id, {
-    //   include: [
-    //     {
-    //       model: User,
-    //       attributes: ['username'],
-    //     },
-    //   ],
-    // });
-     // //! then add the part where you serialize the data for the template
-      // //! all pass in the comments attached to blog post, maybe assign to blog post
+
+    // Fetch all comments on the blogpost
+    const commentsData = await Comment.findAll({
+      where: {
+        post_id: req.params.id,
+      },
+      include: [
+        {
+          model: User,
+          attributes: ['username'],
+        },
+      ],
+    });
+
+    const comments = commentsData.map((comment) =>
+      comment.get({ plain: true })
+    );
 
     const blogpost = blogPostData.get({ plain: true });
+
+    // Attach comments to blogpost and render all on blogpost page
+    blogpost.comments = comments;
 
     res.render('blogpost', {
       ...blogpost,
@@ -64,22 +72,25 @@ router.get('/post/:id', async (req, res) => {
 });
 
 // Use withAuth middleware to prevent unauthorized access
-router.get('/profile', withAuth, async (req, res) => {
+router.get('/dashboard', withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
-      include: [{ model: BlogPost }],
+    const blogPostsData = await BlogPost.findAll({
+      where: {
+        author_id: req.session.user_id,
+      },
     });
 
-    const user = userData.get({ plain: true });
+    const blogposts = blogPostsData.map((blogpost) =>
+      blogpost.get({ plain: true })
+    );
 
-    res.render('profile', {
-      ...user,
-      logged_in: true
+    res.render('dashboard', {
+      blogposts,
+      logged_in: true,
     });
   } catch (error) {
-    res.status(500).json(error);
+    res.status(400).json(error);
   }
 });
 router.get('/login', (req, res) => {
