@@ -1,7 +1,8 @@
 <!-- Conditionally render login or logout links -->
 {{#if logged_in}}
     <li><a href="#section3">Dashboard</a></li>
-    <li><a href="#section3">Logout</a></li>
+    <li><button id="logout">Logout</button></li>
+    <script src="./js/logout.js"></script>
 {{else}}
     <a href="/login">login</a>
 {{/if}}
