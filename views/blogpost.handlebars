@@ -4,4 +4,16 @@
     <p>{{content}}</p>
     <br><br>
     {{> leave-comment}}
+    {{#each comments as |comment| }}
+        <div>
+            <hr/>
+            <h4>Comments on this post:</h4>
+            <p>
+                {{!-- comment property of comment object  --}}
+                {{comment.comment}} 
+                <br>
+                – by {{comment.user.username}} on {{format_date comment.creation_date}}
+            </p>
+        </div>
+    {{/each}}
 </div>
