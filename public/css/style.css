@@ -1,12 +1,42 @@
-/* Set height of the grid so .sidenav can be 100% (adjust if needed) */
-/* .row.content {
-  width: 100%;
-} */
+/* Set the color of the page background */
+body {
+  background-color: cornsilk;
+}
 
-/* Set gray background color and 100% height */
+/* Place margins around the main content */
+main {
+  margin: 20px;
+}
+
+/* Set nav size and color */
 .topnav {
   background-color: #d9ead3;
   width: 100%;
+  padding-top: 20px;
+  margin-bottom: 20px;
+}
+
+.topnav a {
+  color: #555;
+}
+
+.topnav a:hover {
+  color: maroon;
+}
+
+/* Set color of nav links and buttons */
+a {
+  color: #555;
+}
+
+a:hover {
+  color: maroon;
+}
+
+button.btn.btn-primary {
+  background-color: maroon;
+  color: whitesmoke;
+  --bs-btn-border-color: white;
 }
 
 /* Set black background color, white text and some padding */
