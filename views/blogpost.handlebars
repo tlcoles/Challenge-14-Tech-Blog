@@ -1,5 +1,7 @@
-<h1>{{title}}</h1>
-<p>{{content}}</p>
-<p>
-    Created by {{user.username}} on {{format_date creation_date}}
-</p>
+<div class="col-sm-9">
+    <h1>{{title}}</h1>
+    <h5><span class="glyphicon glyphicon-time"></span> Post by {{user.username}}, {{format_date creation_date}}</h5>
+    <p>{{content}}</p>
+    <br><br>
+    {{> leave-comment}}
+</div>
