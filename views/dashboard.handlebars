@@ -1,0 +1,19 @@
+<div>
+  <div>
+    <h2>Your posts</h2>
+    <hr />
+  </div>
+</div>
+{{#each blogposts as |blogpost| }}
+<div>
+    <h2>
+        <a href="/post/{{blogpost.id}}">{{blogpost.title}}</a>
+    </h2>
+    <p>
+        {{blogpost.content}} – <strong>Created on {{format_date blogpost.creation_date}}</strong>
+        
+    </p>
+</div>
+{{/each}}
+
+<script src="./js/dashboard.js"></script>
