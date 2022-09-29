@@ -7,6 +7,7 @@ A ESMT Coding Boot Camp assignment. The challenge is to create a CMS-style blog 
 
 ## Thanks to
 * [Tiffany Conroy](https://github.com/theophani) for the walk-through of the assignment and mentorship  
+* [Morgan Roderick](https://github.com/mroderick) for technical support with Heroku deployment  
 
 ## Contact
 Tammi L. Coles (@tlcoles)  
