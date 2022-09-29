@@ -12,3 +12,4 @@ A ESMT Coding Boot Camp assignment. The challenge is to create a CMS-style blog 
 ## Contact
 Tammi L. Coles (@tlcoles)  
 GitHub repo: https://github.com/tlcoles/Challenge-14-Tech-Blog  
+Heroku deployment: https://rocky-fortress-61988.herokuapp.com/  
