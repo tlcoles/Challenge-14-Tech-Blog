@@ -1,12 +1,15 @@
 const router = require('express').Router();
 const { BlogPost } = require('../../models');
+const withAuth = require('../../utils/auth');
 
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
     const newPost = await BlogPost.create({
+    //  ...req.body is the same thing as:
+    // title: req.body.title,
+    // content: req.body.content,
       ...req.body,
-      title: req.session.title,
-      content: req.session.content,
+      author_id: req.session.user_id,
     });
 
     res.status(200).json(newPost);
@@ -15,12 +18,12 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
   try {
     const blogPostData = await BlogPost.destroy({
       where: {
         id: req.params.id,
-        author_id: req.session.author_id,
+        author_id: req.session.user_id,
       },
     });
 
@@ -29,7 +32,6 @@ router.delete('/:id', async (req, res) => {
       return;
     }
     res.status(200).json(blogPostData);
-
   } catch (err) {
     res.status(500).json(err);
   }
