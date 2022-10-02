@@ -2,6 +2,9 @@
     <h1>{{title}}</h1>
     <h5><span class="glyphicon glyphicon-time"></span> Post by {{user.username}}, {{format_date creation_date}}</h5>
     <p>{{content}}</p>
+    <div class="form-group">
+        <button id="delete-post" type="submit" class="btn btn-danger">Delete post</button>
+    </div>
     <br><br>
     {{> leave-comment}}
     {{#each comments as |comment| }}
