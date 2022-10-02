@@ -1,6 +1,8 @@
 {{#if logged_in}}
       <h4>Leave a comment:</h4>
+
       <form role="form">
+              {{!-- include a hidden variable that includes the {{id}} blogpost id --}}
         <div class="form-group">
           <textarea class="form-control" rows="3" required></textarea>
         </div>
