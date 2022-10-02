@@ -14,7 +14,9 @@ const newFormHandler = async (event) => {
       });
   
       if (response.ok) {
+        alert('New post created!');
         document.location.replace('/dashboard');
+
       } else {
         alert('Failed to create post');
       }
@@ -23,4 +25,4 @@ const newFormHandler = async (event) => {
     
   document
     .querySelector('#new-blogpost-form')
-    .addEventListener('click', newFormHandler);
+    .addEventListener('submit', newFormHandler);
